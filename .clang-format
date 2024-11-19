@@ -1,0 +1,4 @@
+Language: Cpp
+IndentPPDirectives: AfterHash # Или None, если не нужно отступов
+AlignConsecutiveMacros: true
+ColumnLimit: 0 # Чтобы длинные строки не переносились
