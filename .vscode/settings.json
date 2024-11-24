@@ -8,6 +8,7 @@
     "editor.fontSize": 16,
     "editor.fontWeight": "1",
     "workbench.editor.showTabs": "single",
+    "workbench.activityBar.visible": true,
     "workbench.colorCustomizations": {
         "editorCursor.foreground": "#00ff33",
         "editor.lineHighlightBackground": "#111144"
@@ -58,6 +59,7 @@
         "windowsx.h": "c",
         "vulkan_platform.h": "c",
         "renderer_frontend.h": "c",
-        "defines.h": "c"
+        "system_error": "cpp",
+        "asserts.h": "c"
     }
 }
