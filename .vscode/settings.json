@@ -8,8 +8,7 @@
     "editor.fontFamily": "Liberation Mono",
     "editor.fontSize": 16,
     "editor.fontWeight": "1",
-    "workbench.editor.showTabs": false,
-    "workbench.activityBar.visible": true,
+    "workbench.editor.showTabs": "single",
     "workbench.colorCustomizations": {
         "editorCursor.foreground": "#00ff33",
         "editor.lineHighlightBackground": "#111144"
@@ -59,6 +58,7 @@
         "typeinfo": "c",
         "windowsx.h": "c",
         "vulkan_platform.h": "c",
-        "renderer_frontend.h": "c"
+        "renderer_frontend.h": "c",
+        "defines.h": "c"
     }
 }
