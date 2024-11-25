@@ -1,5 +1,6 @@
 #include "logger.h"
 #include "asserts.h"
+#include "platform/platform.h"
 
 // TODO: temporary
 #include <stdio.h>
@@ -7,19 +8,16 @@
 #include <stdarg.h>
 
 
-b8 initialize_logging()
-{
+b8 initialize_logging() {
     // TODO: create log file
     return TRUE;
 }
 
-void shutdown_logging()
-{
+void shutdown_logging() {
     // TODO: clean up logging/writte queued entries.
 }
 
-void log_output(log_level level, const char* message, ...)
-{
+void log_output(log_level level, const char* message, ...) {
     const char* level_string[6] = {
         "[FATL]",
         "[ERRR]",
@@ -28,11 +26,13 @@ void log_output(log_level level, const char* message, ...)
         "[DEBG]",
         "[TRCE]"
     };
+    
+    b8 is_error = level < LOG_LEVEL_WARN;
 
-    //b8 is_error = level < 2;
+    const i32 msg_length = 32000;
 
     // Technically imposes a 32k character limit on a single log entry, but...
-    char out_message[32000];
+    char out_message[msg_length];
     memset(out_message, 0, sizeof(out_message));
 
     // Transplatform arguments pointer (va_list throws error)
@@ -41,14 +41,17 @@ void log_output(log_level level, const char* message, ...)
     vsnprintf(out_message, sizeof(out_message), message, arg_ptr);
     va_end(arg_ptr);
 
-    char out_message2[32000];
+    char out_message2[msg_length];
     sprintf(out_message2, "%s:\t%s\n", level_string[level], out_message);
 
-    // TODO: write to platform specific output
-    printf("%s", out_message2);
+    // Platform specific output
+    if (is_error) {
+        platform_console_write_error(out_message, level);
+    } else {
+        platform_console_write(out_message, level);
+    }
 }
 
-void report_assertion_failure(const char* expression, const char* message, const char* file, i32 line)
-{
+void report_assertion_failure(const char* expression, const char* message, const char* file, i32 line) {
     log_output(LOG_LEVEL_FATAL, "Assertion failed: %s,\nMessage: %s,\nFile: %s,\nLine: %d.\n\n", expression, message, file, line);
 }
