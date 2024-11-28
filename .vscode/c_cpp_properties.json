@@ -23,6 +23,7 @@
                 "${workspaceFolder}/engine/src/**",
                 "${workspaceFolder}/engine/src/*",
                 "${workspaceFolder}/engine/src",
+                "${workspaceFolder}/testbed/src",
                 "${VULKAN_SDK}/include",
             ],
             "defines": [
