@@ -62,6 +62,9 @@
         "asserts.h": "c",
         "iosfwd": "c",
         "xlocbuf": "c",
-        "logger.h": "c"
+        "logger.h": "c",
+        "charconv": "c",
+        "xmemory": "c",
+        "platform.h": "c"
     }
 }
